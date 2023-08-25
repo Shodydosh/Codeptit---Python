@@ -1,0 +1,27 @@
+import math
+
+def isPrime(a):
+    if(a<=1): return "NO"
+    if(a<=3): return "YES"
+    if(a % 2 == 0 or a % 3 == 0): return "NO"
+    sqrt_num = int(math.sqrt(a))
+    for i in range(4, sqrt_num +1, 6):
+        if a % i == 0 or a % (i+ 2) == 0:
+            return "NO"
+    return "YES"
+
+def solve(a):
+    l = len(a)
+    c = [char for char in a]
+    str = c[l-4] + c[l-3] + c[l-2] + c[l-1]
+    return isPrime(int(str))
+
+def main():
+    t = int(input())
+    while t > 0:
+        t -= 1
+        a = (input())
+        print(solve(a))
+
+if __name__ == "__main__":
+    main()
